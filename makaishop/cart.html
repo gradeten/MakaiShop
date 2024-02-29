@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>장바구니 | 🌙 마계통신</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+</head>
+
+<body> 
+    <div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                <img src="images/logo.png" width="65px">
+                </a>
+            </div>
+            <span class="nav">
+                <ul>
+                    <li><a href="index.html" id="bar">홈 화면</a></li>
+                    <li><a href="manual.html" id="bar">주문 방법</a></li>
+                    <li><a href="products.html" id="bar">상품 목록</a></li>
+                    <li><a href="cart.html" id="bar">🛍<span id="listlength"></a></li>
+                </ul>
+            <span>
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="title">
+    <h2>장바구니</h2>
+    <img src="images/line.png" width="100px" style="padding-left:5px">  
+</div>
+
+<div>
+    <table id="tbl">
+    </table>
+</div>
+
+<div class="right" id ="right"> ------------------------- </div> 
+<div class="right" id ="right"> 합계: <span id="sum"> </div> 
+
+
+<br><br><br>
+
+<div class="center">
+    <a class="btn" onclick="openPopup(); order();">주문하기</a> <br><br><br><br><br><br>
+    
+
+    <div class="popup" id="popup">
+        <img src ="images/motorcycle.png" width="50px" id="pop1">
+        <br><br>
+        <h2 id="pop2">감사합니다!</h2>
+        <p style="color:black" id="pop3">마계통신배달부가 곧 출발합니다.</p>
+        <br>
+        <button class="btn" style="font-size:15px; padding: 6px 40px;" onclick="closePopup()">OK</button>
+    </div>
+
+</div>
+
+
+<script>
+    let popup = document.getElementById("popup");
+
+    function openPopup(){
+        if(localStorage.getItem("itemlist") != ""){
+            document.getElementById("pop1").src= "images/motorcycle.png";
+            document.getElementById("pop2").innerHTML = "감사합니다!";
+            document.getElementById("pop3").innerHTML = "마계통신배달부가 곧 출발합니다.";
+            audio.play();
+        }
+        else{
+            document.getElementById("pop1").src= "images/warning.png";
+            document.getElementById("pop2").innerHTML = "장바구니가 비었습니다.";
+            document.getElementById("pop3").innerHTML = "상품을 담은 후 다시 주문해주세요!";
+        }
+
+
+        popup.classList.add("open-popup");
+    }
+
+    function closePopup(){
+        popup.classList.remove("open-popup");
+    }
+
+    document.getElementById("listlength").innerHTML = "(0)";
+    document.getElementById("sum").innerHTML = "0 Eekle";
+
+    const audio = new Audio();
+    audio.src ="images/motorcycle.mp3";
+
+    if(localStorage.getItem("yn") == "yes"){
+        if(localStorage.getItem("itemlist")!=""){
+        ilist = JSON.parse(localStorage.getItem("itemlist"));
+        ilist.push(JSON.parse(localStorage.getItem("itemjson")));
+        localStorage.setItem("itemlist", JSON.stringify(ilist));
+        }
+        else{
+            ilist=[];
+            ilist.push(JSON.parse(localStorage.getItem("itemjson")));
+            localStorage.setItem("itemlist", JSON.stringify(ilist));
+        }
+        localStorage.setItem("yn","no");
+    }
+    else{
+        ilist = JSON.parse(localStorage.getItem("itemlist"));
+    }
+
+    var sum = 0;
+    for(var i = 0; i < ilist.length; i++){
+        sum = sum + Number(ilist[i].price);
+    }
+    document.getElementById("sum").innerHTML = sum +" Eekle";
+
+
+    for(var i = 0; i < ilist.length; i++){
+        document.getElementById("tbl").innerHTML += 
+    "<tr> <td><img src='images/" + ilist[i].image + ".png' width='100px' height='150px' style='border-radius:10px'></td> <td>" + ilist[i].name + "</td> <td>" + ilist[i].price +" Eekle" + "</td> <td>" + "☑️" + "</td></tr>";
+    }
+   
+    
+    function order(){
+        localStorage.setItem("itemlist","");
+        document.getElementById("tbl").innerHTML="";
+        document.getElementById("sum").innerHTML = "0 Eekle";
+        document.getElementById("listlength").innerHTML = "(0)";
+    }
+
+    if(localStorage.getItem("itemlist")==""){
+        document.getElementById("listlength").innerHTML = "(0)";
+    }
+    else{
+        document.getElementById("listlength").innerHTML = "(" + JSON.parse(localStorage.getItem("itemlist")).length + ")";
+    }
+</script>
+
+</body>
+
+</html> 

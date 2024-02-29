@@ -1,0 +1,250 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+body{
+    font-family: 'Song Myung', serif;
+}
+
+input{
+    font-family: 'Song Myung', serif;
+}
+
+.navbar{
+    display:flex;
+    align-items: center;
+    padding:20px;
+}
+
+.nav{
+    flex:1;
+    text-align: right;
+}
+
+
+li{
+    display:inline-block;
+    margin-right:40px;
+}
+
+#bar{
+    text-decoration: none;
+    color:black;
+    font-size:20px;
+}
+
+#bar:hover{
+    text-decoration:underline;
+}
+
+p{
+    font-size:20px;
+    color:black;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding-left:25px;
+    padding-right: 25px;
+}
+
+.row{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.col{
+    padding:15px;
+}
+
+h1{
+    font-size:38px;
+}
+
+#home{
+    border-radius: 20px;
+}
+
+.header{
+    background-image:url(images/pink.jpeg);
+  
+}
+
+.title{
+    text-align: center;
+    margin-top: 30px;
+    padding:20px;
+}
+
+.col3 img{
+    width:250px;
+    height: 300px;
+    margin:15px;
+}
+
+.col4{
+    flex-basis:25%;
+    text-align:center;
+    transition: 0.5s; 
+}
+
+.col4:hover{
+    transform:translateY(-5px);
+}
+
+.col4 img{
+    width:250px;
+    height: 300px;
+    margin:15px;
+}
+
+h3{
+    color:darkgrey;
+}
+
+
+#ptop{
+    padding-top: 40px;
+    padding-left:50px;
+}
+
+.btn{
+    font-size:20px;
+    display:inline-block;
+    color:white;
+    background:#966fd6;
+    padding: 8px 30px;
+    border-radius: 30px;
+    align-items: center;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#a385d5;
+}
+
+table{
+    margin-left:230px;
+}
+
+td{
+    font-size: 25px;
+    text-align:left;
+    padding-right: 150px;
+    padding-bottom: 50px;
+}
+
+@media(max-width:1200px){
+    table{
+        margin-left: 40px;
+    }
+
+    td{
+        font-size: 20px;
+        text-align: center;
+        padding-right: 80px;
+        padding-bottom: 50px;
+    }
+
+    #tbl img{
+        width:80px;
+        height:100px;
+    }
+
+    #right{
+        font-size: 20px;
+        margin-right: 100px;
+    }
+}
+
+/* #left{
+   float: left;
+   padding-left: 65px;
+} */
+
+.center{
+    text-align:center;
+}
+
+.right{
+    text-align: end;
+    font-size: 25px;
+    margin-right: 200px;
+}
+
+.pic img{
+    width:400px;
+    height:350px;
+    border-radius: 20px;
+}
+
+.pic{
+    max-width: 1000px;
+    padding: 10px;
+    text-align: center;
+}
+
+.slider{
+    width:585px;
+    height:560px;
+   background:url(images/s6.png);
+   margin:50px auto;
+   margin-top:10px;
+   animation:slide 15s infinite;
+   
+} 
+
+@keyframes slide{
+    33%{
+        background:url(images/s4.png);
+    }
+    66%{
+        background:url(images/s5.png);
+    }
+    100%{
+        background:url(images/s6.png);
+    }
+}
+
+.popup{
+    width:400px;
+    background:#fff;
+    border-radius: 6px;
+    position:absolute;
+    top: 0;
+    left: 50%;
+    transform:translate(-50%, -50%) scale(0.1);
+    box-shadow:2px 2px 2px 2px darkgrey;
+    text-align: center;
+    padding:30px 30px 30px;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup{
+    visibility: visible;
+    top:43%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup img{
+    width:100px;
+    margin-top: -80px;
+    border-radius:50%;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+.cursor{
+    cursor:pointer;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>상품 | 🌙 마계통신</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+    <script>
+        function add_row() {
+            ijson = {image:"item12", name:"사랑의 향수", price:"1000"};
+            localStorage.setItem("itemjson", JSON.stringify(ijson));
+            localStorage.setItem("yn", "yes");
+        }
+    </script>
+</head>
+
+<body> 
+    <div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                <img src="images/logo.png" width="65px">
+                </a>
+            </div>
+            <span class="nav">
+                <ul>
+                    <li><a href="index.html" id="bar">홈 화면</a></li>
+                    <li><a href="manual.html" id="bar">주문 방법</a></li>
+                    <li><a href="products.html" id="bar">상품 목록</a></li>
+                    <li><a href="cart.html" id="bar">🛍<span id="listlength"></a></li>
+                </ul>
+            <span>
+            
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="row">
+        <div class="col" id="ptop">
+            <img src="images/item12.png" id="home" width="400px">
+        </div>
+        <div class="col" id="ptop">
+            <h1>사랑의 향수</h1>
+            <h2 style="color:darkgray">1000 Eekle</h2>
+            <p>-------------------------------------------------------------------</p>
+            <br>
+            <h2>상품설명</h2>
+            <p>모든 사랑에 효과가 있는 향수</p><br><br>
+            <form action="cart.html">
+                <input type="submit" value="장바구니에 담기" class="btn" onclick="add_row()">
+            </form>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br>
+
+<div class="container">
+    <div class="row">
+        <a href="productdetail10.html">
+            <div class="col4">
+                <img src="images/item10.png">
+                <h2>투시돋보기</h2>
+                <h3>500 Eekle</h3>
+            </div>
+        </a>
+
+        <a href="productdetail11.html">
+            <div class="col4">
+                <img src="images/item11.png">
+                <h2>인기폭발 바레뜨</h2>
+                <h3>800 Eekle</h3>
+            </div>
+        </a>
+
+        <a href="productdetail13.html">
+            <div class="col4">
+                <img src="images/item13.png">  
+                <h2>여왕 폐하 왕관</h2>
+                <h3>1000 Eekle</h3>
+            </div>
+        </a>    
+
+        <a href="productdetail14.html">
+            <div class="col4">
+                <img src="images/item14.png">
+                <h2>하늘을 나는 빗자루</h2>
+                <h3>15000 Eekle</h3>
+            </div>
+        </a>
+
+
+    </div>
+</div>
+
+</body>
+
+<script>
+    if(localStorage.getItem("itemlist")==""){
+        document.getElementById("listlength").innerHTML = "(0)";
+    }
+    else{
+        document.getElementById("listlength").innerHTML = "(" + JSON.parse(localStorage.getItem("itemlist")).length + ")";
+    }
+</script>
+
+</html> 

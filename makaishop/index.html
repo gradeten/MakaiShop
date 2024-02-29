@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>🌙 마계통신</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                <img src="images/logo.png" width="65px">
+                </a>
+            </div>
+            <span class="nav">
+                <ul>
+                    <li><a href="index.html" id="bar">홈 화면</a></li>
+                    <li><a href="manual.html" id="bar">주문 방법</a></li>
+                    <li><a href="products.html" id="bar">상품 목록</a></li>
+                    <li><a href="cart.html" id="bar">🛍<span id="listlength"></a></li>
+                </ul>
+            <span>
+            
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col">
+                <h1>새로워진 마계통신판매북을 <br> 만나보세요</h1>
+                <p>
+                    <br>마계에서만 볼 수 있었던 마법상품들을 당신의 집 앞으로! <br>
+                    이제는 책이 아닌 인터넷에서 주문해보세요.
+                </p>
+            </div>
+            <div class="col">
+                <img src="images/home.png" id="home" width="500px">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="title">
+        <h2>오늘의 추천 상품</h2>
+        <img src="images/line.png" width="100px">
+    </div>  
+
+    <div class="row">
+        <div class="col3">
+            <img id="tod1">
+        </div>
+        <div class="col3">
+            <img id="tod2">
+        </div>
+        <div class="col3">
+            <img id="tod3">
+        </div>
+    </div>
+    
+    
+</div>
+
+</body>
+    
+<script>
+    var lotto = [];
+
+    while(lotto.length<4){
+        var one = Math.floor(Math.random()*14)+1;
+        lotto.push(one);
+
+        var two = Math.floor(Math.random()*14)+1;
+        while(lotto.length<2){
+            if(two != one){
+                lotto.push(two);
+            }
+            else{
+                var two = Math.floor(Math.random()*14)+1;
+            }
+        }
+
+        var three = Math.floor(Math.random()*14)+1;
+        while(lotto.length<3){
+            if((three != one)&&(three != two)){
+                lotto.push(three);
+            }
+            else{
+                var three = Math.floor(Math.random()*14)+1;
+            }
+        }
+    }
+
+
+    document.getElementById("tod1").src = "images/item" + lotto[0] + ".png";
+    document.getElementById("tod2").src = "images/item" + lotto[1] + ".png";
+    document.getElementById("tod3").src = "images/item" + lotto[2] + ".png";
+
+    if(localStorage.getItem("itemlist")==""){
+        document.getElementById("listlength").innerHTML = "(0)";
+    }
+    else{
+        document.getElementById("listlength").innerHTML = "(" + JSON.parse(localStorage.getItem("itemlist")).length + ")";
+    }
+    
+
+</script>
+
+</html> 
